@@ -93,4 +93,24 @@ exports.DeployerOrAttacher = class extends React.Component {
   }
 }
 
+exports.SelectNetwork = class extends React.Component {
+  render() {
+    const {parent} = this.props;
+    return (
+      <div>
+        <p>
+          Please have ConfluxPortal already set to your desired network,
+          then refresh the page and click the corresponding button.
+        </p>
+        <button
+          onClick={() => parent.selectNetwork('TestNet')}
+        >TestNet</button>
+        <button
+          onClick={() => parent.selectNetwork('MainNet')}
+        >MainNet</button>
+      </div>
+    );
+  }
+}
+
 export default exports;

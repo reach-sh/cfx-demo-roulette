@@ -6,18 +6,8 @@ import {renderDOM, renderView} from './views/render';
 import './index.css';
 import * as backend from './build/index.main.mjs';
 import {loadStdlib} from '@reach-sh/stdlib';
-import MyAlgoConnect from '@reach-sh/stdlib/ALGO_MyAlgoConnect';
 
 const reach = loadStdlib({REACH_CONNECTOR_MODE: 'CFX'});
-if (reach.connector == 'ALGO') {
-  reach.setWalletFallback(reach.walletFallback({
-    providerEnv: 'TestNet',
-    MyAlgoConnect,
-  }));
-}
-if (reach.connector == 'CFX') {
-  reach.setProviderByName('TestNet');
-} 
 
 const SelectTerm = {'YES': true, 'NO': false};
 const {standardUnit} = reach;
@@ -32,12 +22,12 @@ class App extends React.Component {
     this.state = {view: 'ConnectAccount', ...defaults};
   }
   async componentDidMount() {
-
-    const now = await reach.getNetworkTime();
+    this.setState({view: 'SelectNetwork'});
+  }
+  async selectNetwork(network) {
+    if (network) { reach.setProviderByName(network); }
     const acc = await reach.getDefaultAccount();
-    if (reach.connector == 'CFX') {
-      acc.setGasLimit(5000000);
-    }
+    acc.setGasLimit(5000000);
     const balAtomic = await reach.balanceOf(acc);
     const bal = reach.formatCurrency(balAtomic, 4);
     this.setState({acc, bal});
@@ -100,7 +90,7 @@ class Deployer extends Player {
     const ctc = this.props.acc.deploy(backend);
     this.setState({view: 'Deploying', ctc});
     this.wager = reach.parseCurrency(this.state.wager);
-    this.deadline = reach.connector == 'CFX' ? 200 : 30;
+    this.deadline = reach.connector === 'CFX' ? 200 : 30;
     backend.Sponsor(ctc, this);
     const ctcInfoStr = JSON.stringify(await ctc.getInfo(), null, 2);
     this.setState({view: 'WaitingForAttacher', ctcInfoStr});
@@ -153,7 +143,6 @@ class Attacher extends Player {
     this.setState({view: 'ReturnerWas', ticket:ticket.toString()})
   }
 
-  
   render() { return renderView(this, AttacherViews); }
 }
 
