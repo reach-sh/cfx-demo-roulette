@@ -11,7 +11,7 @@ const reach = loadStdlib({REACH_CONNECTOR_MODE: 'CFX'});
 
 const SelectTerm = {'YES': true, 'NO': false};
 const {standardUnit} = reach;
-const defaults = {defaultFundAmt: '10', defaultWager: '3', standardUnit};
+const defaults = {defaultWager: '3', standardUnit};
 var isA = false;
 var isB;
 
@@ -28,22 +28,8 @@ class App extends React.Component {
     if (network) { reach.setProviderByName(network); }
     const acc = await reach.getDefaultAccount();
     acc.setGasLimit(5000000);
-    const balAtomic = await reach.balanceOf(acc);
-    const bal = reach.formatCurrency(balAtomic, 4);
-    this.setState({acc, bal});
-    try {
-      const faucet = await reach.getFaucet();
-      this.setState({view: 'FundAccount', faucet});
-    } catch (e) {
-      this.setState({view: 'DeployerOrAttacher'});
-    }
-  }
-  async fundAccount(fundAmount) {
-
-    await reach.transfer(this.state.faucet, this.state.acc, reach.parseCurrency(fundAmount));
     this.setState({view: 'DeployerOrAttacher'});
   }
-  async skipFundAccount() { this.setState({view: 'DeployerOrAttacher'}); }
   selectAttacher() { this.setState({view: 'Wrapper', ContentView: Attacher}); }
   selectDeployer() { this.setState({view: 'Wrapper', ContentView: Deployer}); }
   render() { return renderView(this, AppViews); }
