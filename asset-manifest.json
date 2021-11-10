@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/cfx-demo-roulette/static/css/main.97f638e6.chunk.css",
-    "main.js": "/cfx-demo-roulette/static/js/main.48623833.chunk.js",
-    "main.js.map": "/cfx-demo-roulette/static/js/main.48623833.chunk.js.map",
+    "main.js": "/cfx-demo-roulette/static/js/main.fb35fe12.chunk.js",
+    "main.js.map": "/cfx-demo-roulette/static/js/main.fb35fe12.chunk.js.map",
     "runtime-main.js": "/cfx-demo-roulette/static/js/runtime-main.72b981b7.js",
     "runtime-main.js.map": "/cfx-demo-roulette/static/js/runtime-main.72b981b7.js.map",
-    "static/js/2.78dcbf95.chunk.js": "/cfx-demo-roulette/static/js/2.78dcbf95.chunk.js",
-    "static/js/2.78dcbf95.chunk.js.map": "/cfx-demo-roulette/static/js/2.78dcbf95.chunk.js.map",
+    "static/js/2.2f5de8d7.chunk.js": "/cfx-demo-roulette/static/js/2.2f5de8d7.chunk.js",
+    "static/js/2.2f5de8d7.chunk.js.map": "/cfx-demo-roulette/static/js/2.2f5de8d7.chunk.js.map",
     "index.html": "/cfx-demo-roulette/index.html",
     "static/css/main.97f638e6.chunk.css.map": "/cfx-demo-roulette/static/css/main.97f638e6.chunk.css.map",
-    "static/js/2.78dcbf95.chunk.js.LICENSE.txt": "/cfx-demo-roulette/static/js/2.78dcbf95.chunk.js.LICENSE.txt",
+    "static/js/2.2f5de8d7.chunk.js.LICENSE.txt": "/cfx-demo-roulette/static/js/2.2f5de8d7.chunk.js.LICENSE.txt",
     "static/media/index.css": "/cfx-demo-roulette/static/media/loading.edbca36f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.72b981b7.js",
-    "static/js/2.78dcbf95.chunk.js",
+    "static/js/2.2f5de8d7.chunk.js",
     "static/css/main.97f638e6.chunk.css",
-    "static/js/main.48623833.chunk.js"
+    "static/js/main.fb35fe12.chunk.js"
   ]
 }
