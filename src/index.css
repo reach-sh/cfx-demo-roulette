@@ -1,13 +1,490 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url("bg.jpg");
+    background-size: cover;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  .App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    background-repeat: repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    opacity:0.9;
+    position:absolute;
+    width:100%;
+    height:100%;
+  }
+  .ui-text{
+    animation-name: flop;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+  }
+  .App-link {
+    color: #61dafb;
+  }
+  
+  input {
+    color:#fff;
+    font-size: calc(10px + 2vmin);
+    width: 4em;
+    background-color:rgba(0,0,0,0);
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#dadada;
+  }
+  
+  button {
+    font-size: calc(10px + 2vmin);
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    opacity:0.5;
+  }
+  button:hover {
+    font-size: calc(10px + 2vmin);
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    opacity:1;
+  }
+  
+  textarea {
+    font-size: calc(10px + 2vmin);
+  }
+  
+  .ContractInfo {
+    font-size: calc(10px + 1vmin);
+    text-align: left;
+    width: 90vw;
+    height: 7em;
+    padding: 2vw;
+    overflow-x: scroll;
+    white-space: pre;
+  }
+  .deploy-btn{
+    background-color: #20366b;
+    color:#fff;
+  }
+  .deploy-btn:hover{
+    background-color: #20366b;
+    color:#fff;
+  }
+  .attach-btn{
+    background-color: #8E0C24;
+    color:#fff;
+  }
+  .attach-btn:hover{
+    background-color: #8E0C24;
+    color:#fff;
+  }
+  .Deployer{
+    animation-name: flop;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+  }
+  .Attacher{
+    animation-name: flop;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+  }
+  #ETH{
+    height:56px;
+    width:130px;
+    background-image: url("eth.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position:relative;
+    margin:auto;
+  }
+  #CFX{
+    height:56px;
+    width:130px;
+    background-image: url("cfx.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position:relative;
+    margin:auto;
+  }
+  #text-box{
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    position:absolute;
+  }
+  #loading{
+    height:30px;
+    width:30px;
+    background-image:url("loading.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    /*background-color:#000;*/
+    position:absolute;
+    left:36%;
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+  #info-layer{
+    font-size:150%;
+    height:40px;
+    width:40px;
+    /*background-color:#8ac6d1;*/
+    position:fixed;
+    left:10px;
+    top:10px;
+    opacity:0.8;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#dadada;
+    z-index:9;
+    transition: opacity 0.5s;
+  }
+  #info-layer:hover{
+    font-size:150%;
+    height:40px;
+    width:40px;
+    /*background-color:#8ac6d1;*/
+    position:fixed;
+    left:10px;
+    top:10px;
+    opacity:0;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#dadada;
+    z-index:9;
+  }
+  #how-to-play{
+    font-size:0em;
+    height:40px;
+    width:40px;
+    background-color:rgba(0,0,0,0);
+    position:fixed;
+    left:10px;
+    top:10px;
+    opacity:0;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#dadada;
+    z-index:10;
+    transition: opacity 0.5s, width 0.5s, height 0.5s, background-color 0.5s, font-size 0.5s;
+  }
+  #how-to-play:hover{
+    font-size:1.5em;
+    height:50%;
+    width:50%;
+    background-color:rgba(0,0,0,0.8);
+    position:fixed;
+    left:10px;
+    top:10px;
+    opacity:1;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#dadada;
+    z-index:10;
+  }
+  #random-num{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    height:30px;
+    width:30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 25px;
+    animation-name: switch-num;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  #no0{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img0.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no1{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no2{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no3{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img3.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no4{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img4.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no5{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img5.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no6{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img6.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no7{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img7.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no8{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img8.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no9{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img9.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no10{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img10.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #no11{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    animation-name: bigger;
+    animation-timing-function: linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    background-image:url("img11.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+  }
+  #info-text{
+    color:#fff;
+    position:absolute;
+    left:50%;
+    top:5%;
+    width:90%;
+    transform:translate(-50%,-5%);
+    text-align: left;
+  }
+  #info-logo{
+    color:#fff;
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:90%;
+    transform:translate(-50%,-50%);
+  }
+  
+  @keyframes spin
+  {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+  }
+  @keyframes flop
+{
+    from {
+      transform: rotateX(180deg);
+      opacity:0;
+  }
+    to {
+      transform: rotateX(0deg);
+      opacity:1;
+    }
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes bigger
+{
+    from {
+      height:30px;
+      width:30px;
+  }
+    to {
+      height:40px;
+      width:40px;
+    }
+}
+@keyframes switch-num
+{
+    0% {
+      background-image:url("img0.png");
+  }
+    8% {
+      background-image:url("img1.png");
+    }
+    16% {
+      background-image:url("img2.png");
+    }
+    24% {
+      background-image:url("img3.png");
+    }
+    32% {
+      background-image:url("img4.png");
+    }
+    40% {
+      background-image:url("img5.png");
+    }
+    48% {
+      background-image:url("img6.png");
+    }
+    56% {
+      background-image:url("img7.png");
+    }
+    64% {
+      background-image:url("img8.png");
+    }
+    72% {
+      background-image:url("img9.png");
+    }
+    80% {
+      background-image:url("img10.png");
+    }
+    88% {
+      background-image:url("img11.png");
+    }
+    100% {
+      background-image:url("img0.png");
+    }
 }
