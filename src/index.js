@@ -28,7 +28,7 @@ class App extends React.Component {
     if (network) { reach.setProviderByName(network); }
     const acc = await reach.getDefaultAccount();
     acc.setGasLimit(5000000);
-    this.setState({view: 'DeployerOrAttacher'});
+    this.setState({view: 'DeployerOrAttacher', acc});
   }
   selectAttacher() { this.setState({view: 'Wrapper', ContentView: Attacher}); }
   selectDeployer() { this.setState({view: 'Wrapper', ContentView: Deployer}); }
