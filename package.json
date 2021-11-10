@@ -1,6 +1,7 @@
 {
   "name": "cfx-demo-roulette",
   "version": "0.1.0",
+  "homepage": "https://reach-lang.github.io/cfx-demo-roulette",
   "private": true,
   "dependencies": {
     "@reach-sh/stdlib": "^0.1.6-rc.7",
